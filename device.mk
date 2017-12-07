@@ -137,6 +137,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     vndk_package
 
+# HIDL
 PRODUCT_PACKAGES += \
     android.hidl.base@1.0
 
