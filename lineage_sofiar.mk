@@ -19,20 +19,18 @@
 # product configuration (apps).
 #
 
-VENDOR_EXCEPTION_PATHS := omni \
+VENDOR_EXCEPTION_PATHS := lineage \
     motorola \
     gapps \
     microg
 
-# Sample: This is where we'd set a backup provider if we had one
-# $(call inherit-product, device/sample/products/backup_overlay.mk)
+# Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
-# Get the prebuilt list of APNs
-$(call inherit-product, vendor/omni/config/gsm.mk)
-
-# Inherit from the common Open Source product configuration
-$(call inherit-product, $(SRC_TARGET_DIR)/product/aosp_base_telephony.mk)
+# Inherit some common Lineage stuff
+$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
@@ -55,18 +53,10 @@ TARGET_NO_RECOVERY := false
 BOARD_BUILD_RETROFIT_DYNAMIC_PARTITIONS_OTA_PACKAGE := false
 BOARD_USES_RECOVERY_AS_BOOT := false
 
-# must be before including omni part
-TARGET_BOOTANIMATION_SIZE := 1080p
+# must be before including Lineage part
 AB_OTA_UPDATER := true
 
 DEVICE_PACKAGE_OVERLAYS += device/motorola/sofiar/overlay/device
-DEVICE_PACKAGE_OVERLAYS += vendor/omni/overlay/CarrierConfig
-
-# Inherit from our custom product configuration
-$(call inherit-product, vendor/omni/config/common.mk)
-
-# get the rest of aosp stuff after ours
-$(call inherit-product, $(SRC_TARGET_DIR)/product/mainline_system_arm64.mk)
 
 # Inherit from hardware-specific part of the product configuration
 $(call inherit-product, device/motorola/sofiar/device.mk)
@@ -74,7 +64,7 @@ $(call inherit-product, device/motorola/sofiar/device.mk)
 PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := omni_sofiar
+PRODUCT_NAME := lineage_sofiar
 PRODUCT_DEVICE := sofiar
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
@@ -85,8 +75,8 @@ PRODUCT_SYSTEM_NAME := Moto G8 Power
 
 VENDOR_RELEASE := 10/QPE30.79-25/59f4f:user/release-keys
 BUILD_FINGERPRINT := motorola/sofiar_retail/sofiar:$(VENDOR_RELEASE)
-OMNI_BUILD_FINGERPRINT := motorola/sofiar_retail/sofiar:$(VENDOR_RELEASE)
-OMNI_PRIVATE_BUILD_DESC := "'sofiar_retail-user 10 QPE30.79-25 59f4f release-keys'"
+#OMNI_BUILD_FINGERPRINT := motorola/sofiar_retail/sofiar:$(VENDOR_RELEASE)
+#OMNI_PRIVATE_BUILD_DESC := "'sofiar_retail-user 10 QPE30.79-25 59f4f release-keys'"
 
 PLATFORM_SECURITY_PATCH_OVERRIDE := 2019-12-01
 

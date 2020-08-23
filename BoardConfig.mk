@@ -110,7 +110,7 @@ BOARD_PROPERTY_OVERRIDES_SPLIT_ENABLED := true
 
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 
-include vendor/omni/sepolicy/sepolicy.mk
+#include vendor/omni/sepolicy/sepolicy.mk
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/public
 BOARD_PLAT_PRIVATE_SEPOLICY_DIR += $(DEVICE_PATH)/sepolicy/private
 BOARD_PLAT_PUBLIC_SEPOLICY_DIR += \
