@@ -1,7 +1,7 @@
 allow init adsprpcd_file:dir { create rmdir };
-allow init bt_firmware_file:dir { create rmdir };
-allow init firmware_file:dir { create rmdir };
-allow init fsg_file:dir { create mounton rmdir };
+allow init bt_firmware_file:dir { rmdir };
+allow init firmware_file:dir { rmdir };
+allow init fsg_file:dir { mounton rmdir };
 allow init sysfs_graphics:file rw_file_perms;
 #allow init vendor_file:dir { create rmdir };
 
