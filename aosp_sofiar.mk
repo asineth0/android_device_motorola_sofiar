@@ -19,7 +19,7 @@
 # product configuration (apps).
 #
 
-VENDOR_EXCEPTION_PATHS := lineage \
+VENDOR_EXCEPTION_PATHS := aosp \
     motorola \
     gapps \
     microg
@@ -30,7 +30,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/product_launched_with_p.mk)
 
 # Inherit some common Lineage stuff
-$(call inherit-product, vendor/lineage/config/common_full_phone.mk)
+$(call inherit-product, vendor/aosp/config/common_full_phone.mk)
 
 PRODUCT_USE_DYNAMIC_PARTITIONS := true
 PRODUCT_BUILD_SUPER_PARTITION := false
@@ -64,7 +64,7 @@ $(call inherit-product, device/motorola/sofiar/device.mk)
 PRODUCT_SHIPPING_API_LEVEL := 29
 
 # Discard inherited values and use our own instead.
-PRODUCT_NAME := lineage_sofiar
+PRODUCT_NAME := aosp_sofiar
 PRODUCT_DEVICE := sofiar
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
@@ -83,3 +83,6 @@ PLATFORM_SECURITY_PATCH_OVERRIDE := 2019-12-01
 TARGET_VENDOR := motorola
 
 $(call inherit-product, vendor/motorola/sofiar/sofiar-vendor.mk)
+
+# Pixel experience GApps
+TARGET_GAPPS_ARCH := arm64
