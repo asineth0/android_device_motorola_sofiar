@@ -49,7 +49,7 @@ public class BootCompletedReceiver extends BroadcastReceiver {
             sOverlayService = new OverlayManager();
         }
         try {
-            String deviceProp = SystemProperties.get("ro.product.product.device", "sofia");
+            String deviceProp = SystemProperties.get("ro.boot.device");
             if (deviceProp.contains("rav")) {
                 boolean isEnabled = sOverlayService.getOverlayInfo(ravOverlayPackageName,
                     UserHandle.myUserId()).isEnabled();
